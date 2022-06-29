@@ -26,7 +26,6 @@ running = True
 while running:
     # RGB values: Red, Green, Blue
     screen.fill((0, 25, 52))
-    playerY -= 0.2
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
