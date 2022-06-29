@@ -41,6 +41,13 @@ while running:
                 playerX_change = 0
 
     playerX += playerX_change
-    player(playerX,playerY)
+
+    if playerX <= 0:
+        playerX = 0
+    # 800 - 32 pixels (size of the image) is 768
+    elif playerX >= 768:
+        playerX = 768
+
+    player(playerX, playerY)
     # This will update the screen/display/game window
     pygame.display.update()
