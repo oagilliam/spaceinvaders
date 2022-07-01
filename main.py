@@ -17,6 +17,12 @@ playerX = 400
 playerY = 520
 playerX_change = 0
 
+# Enemy
+enemyImg = pygame.image.load("alien.png")
+enemyX = 400
+enemyY = 520
+enemyX_change = 0
+
 def player(x,y):
     screen.blit(playerImg, (x, y))
 
