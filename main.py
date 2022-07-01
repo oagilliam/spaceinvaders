@@ -4,7 +4,7 @@ import pygame
 pygame.init()
 
 # create the screen, variables are screen size (width, height)
-screen = pygame.display.set_mode((800, 600))
+screen = pygame.display.set_mode((700, 600))
 
 # Title and Icon
 pygame.display.set_caption("Space Invaders")
@@ -13,14 +13,14 @@ pygame.display.set_icon(icon)
 
 # Player
 playerImg = pygame.image.load("spaceship.png")
-playerX = 400
+playerX = 350
 playerY = 520
 playerX_change = 0
 
 # Enemy
 enemyImg = pygame.image.load("alien.png")
-enemyX = 400
-enemyY = 520
+enemyX = 350
+enemyY = 50
 enemyX_change = 0
 
 
@@ -55,9 +55,9 @@ while running:
 
     if playerX <= 0:
         playerX = 0
-    # 800 - 32 pixels (size of the image) is 768
-    elif playerX >= 768:
-        playerX = 768
+    # 700 - 32 pixels (size of the image) is 698
+    elif playerX >= 668:
+        playerX = 668
 
     player(playerX, playerY)
     enemy(enemyX, enemyY)
