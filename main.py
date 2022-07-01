@@ -23,8 +23,13 @@ enemyX = 400
 enemyY = 520
 enemyX_change = 0
 
-def player(x,y):
+
+def player(x, y):
     screen.blit(playerImg, (x, y))
+
+
+def enemy(x, y):
+    screen.blit(enemyImg, (x, y))
 
 
 # Game Loop
@@ -55,5 +60,6 @@ while running:
         playerX = 768
 
     player(playerX, playerY)
+    enemy(enemyX, enemyY)
     # This will update the screen/display/game window
     pygame.display.update()
