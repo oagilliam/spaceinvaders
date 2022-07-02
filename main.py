@@ -25,7 +25,7 @@ playerX_change = 0
 enemyImg = pygame.image.load("alien.png")
 enemyX = random.randint(0,681)
 enemyY = random.randint(50,150)
-enemyX_change = 0.1
+enemyX_change = 0.8
 enemyY_change = 40
 
 def player(x, y):
@@ -41,6 +41,8 @@ running = True
 while running:
     # RGB values: Red, Green, Blue
     screen.fill((0, 25, 52))
+    # background image
+    screen.blit(background,(0,0))
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -48,9 +50,9 @@ while running:
         # If keystroke is pressed check whether its right or left
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                playerX_change = -0.3
+                playerX_change = -3
             if event.key == pygame.K_RIGHT:
-                playerX_change = 0.3
+                playerX_change = 3
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                 playerX_change = 0
@@ -68,10 +70,10 @@ while running:
     enemyX += enemyX_change
 
     if enemyX <= 0:
-        enemyX_change = 0.3
+        enemyX_change = 0.8
         enemyY += enemyY_change
     elif enemyX >= 736:
-        enemyX_change = -0.3
+        enemyX_change = -0.8
         enemyY += enemyY_change
 
     player(playerX, playerY)
