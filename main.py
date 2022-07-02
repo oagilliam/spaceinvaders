@@ -25,7 +25,7 @@ playerX_change = 0
 enemyImg = pygame.image.load("alien.png")
 enemyX = random.randint(0,681)
 enemyY = random.randint(50,150)
-enemyX_change = 0.8
+enemyX_change = 0.9
 enemyY_change = 40
 
 def player(x, y):
@@ -70,10 +70,10 @@ while running:
     enemyX += enemyX_change
 
     if enemyX <= 0:
-        enemyX_change = 0.8
+        enemyX_change = 0.9
         enemyY += enemyY_change
     elif enemyX >= 736:
-        enemyX_change = -0.8
+        enemyX_change = -0.9
         enemyY += enemyY_change
 
     player(playerX, playerY)
