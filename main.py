@@ -5,17 +5,18 @@ import random
 pygame.init()
 
 # create the screen, variables are screen size (width, height)
-screen = pygame.display.set_mode((700, 600))
+screen = pygame.display.set_mode((800, 600))
 
 # Title and Icon
 pygame.display.set_caption("Space Invaders")
 icon = pygame.image.load("Spaceship1.png")
+background = pygame.image.load("background.png")
 pygame.display.set_icon(icon)
 
 # Player
-playerImg = pygame.image.load("spaceship.png")
-playerX = 350
-playerY = 520
+playerImg = pygame.image.load("battleship.png")
+playerX = 370
+playerY = 480
 playerX_change = 0
 
 # Enemy
@@ -70,7 +71,6 @@ while running:
     elif enemyX >= 668:
         enemyX_change = -0.1
         enemyY += enemyY_change
-
 
     player(playerX, playerY)
     enemy(enemyX, enemyY)
