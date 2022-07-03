@@ -47,7 +47,7 @@ def enemy(x, y):
 def fire_laser(x,y):
     global laser_state
     laser_state = 'fire'
-    screen.blit(laserImg, (x + 16,y + 10))
+    screen.blit(laserImg, (x + 30,y + 10)) # This changes laser starting position
 
 # Game Loop
 running = True
