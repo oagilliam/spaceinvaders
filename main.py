@@ -28,6 +28,15 @@ enemyY = random.randint(50,150)
 enemyX_change = 0.9
 enemyY_change = 40
 
+# Laser
+# ready, means the player can't see the laser on the screen
+# fire means the laser is shooting
+laserImg = pygame.image.load("alien.png")
+laserX = 0
+laserY = 480
+laserY_change = 40
+laser_state = "ready"
+
 def player(x, y):
     screen.blit(playerImg, (x, y))
 
