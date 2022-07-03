@@ -31,10 +31,10 @@ enemyY_change = 40
 # Laser
 # ready, means the player can't see the laser on the screen
 # fire means the laser is shooting
-laserImg = pygame.image.load("alien.png")
+laserImg = pygame.image.load("yellowlaserbeam.png")
 laserX = 0
 laserY = 480
-laserY_change = 40
+laserY_change = 10
 laser_state = "ready"
 
 def player(x, y):
@@ -44,6 +44,10 @@ def player(x, y):
 def enemy(x, y):
     screen.blit(enemyImg, (x, y))
 
+def fire_laser(x,y):
+    global laser_state
+    laser_state = 'fire'
+    screen.blit(laserImg, (x + 16,y + 10))
 
 # Game Loop
 running = True
@@ -62,6 +66,8 @@ while running:
                 playerX_change = -3
             if event.key == pygame.K_RIGHT:
                 playerX_change = 3
+            if event.key == pygame.K_SPACE:
+                fire_laser(playerX, laserY)
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                 playerX_change = 0
