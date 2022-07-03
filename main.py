@@ -91,6 +91,11 @@ while running:
         enemyX_change = -0.9
         enemyY += enemyY_change
 
+    # Laser Movment
+    if laser_state is 'fire':
+        fire_laser(playerX,laserY)
+        laserY -= laserY_change
+
     player(playerX, playerY)
     enemy(enemyX, enemyY)
     # This will update the screen/display/game window
