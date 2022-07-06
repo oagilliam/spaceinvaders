@@ -37,6 +37,8 @@ laserY = 480
 laserY_change = 10
 laser_state = "ready"
 
+score = 0
+
 def player(x, y):
     screen.blit(playerImg, (x, y))
 
@@ -116,6 +118,7 @@ while running:
     if collision:
         laserY = 480
         laser_state = "ready"
+        score += 1
 
     player(playerX, playerY)
     enemy(enemyX, enemyY)
