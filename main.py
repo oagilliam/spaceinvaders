@@ -1,6 +1,6 @@
 import pygame
 import random
-
+import math
 # Initialize the pygame
 pygame.init()
 
@@ -48,6 +48,14 @@ def fire_laser(x,y):
     global laser_state
     laser_state = 'fire'
     screen.blit(laserImg, (x + 30,y + 10)) # This changes laser starting position
+
+def isCollision(enemyX,enemyY,laserX,laserY):
+    distance = math.sqrt((math.pow(enemyX-laserX,2)) + (math.pow(enemyY-laserY,2)))
+    if distance < 27:
+        return True
+    else:
+        return false
+
 
 # Game Loop
 running = True
