@@ -23,7 +23,7 @@ playerX_change = 0
 
 # Enemy
 enemyImg = pygame.image.load("alien.png")
-enemyX = random.randint(0,681)
+enemyX = random.randint(0,735)
 enemyY = random.randint(50,150)
 enemyX_change = 0.9
 enemyY_change = 40
@@ -120,6 +120,8 @@ while running:
         laser_state = "ready"
         score += 1
         print(score)
+        enemyX = random.randint(0,735)
+        enemyY = random.randint(50,150)
 
     player(playerX, playerY)
     enemy(enemyX, enemyY)
