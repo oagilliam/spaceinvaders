@@ -111,6 +111,12 @@ while running:
         fire_laser(laserX,laserY)
         laserY -= laserY_change
 
+    # Collision
+    collision = isCollision(enemyX,enemyY,laserX,laserY)
+    if collision:
+        laserY = 480
+        laser_state = "ready"
+
     player(playerX, playerY)
     enemy(enemyX, enemyY)
     # This will update the screen/display/game window
