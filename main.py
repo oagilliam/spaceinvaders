@@ -56,7 +56,7 @@ def isCollision(enemyX,enemyY,laserX,laserY):
     if distance < 27:
         return True
     else:
-        return false
+        return False
 
 
 # Game Loop
@@ -119,6 +119,7 @@ while running:
         laserY = 480
         laser_state = "ready"
         score += 1
+        print(score)
 
     player(playerX, playerY)
     enemy(enemyX, enemyY)
