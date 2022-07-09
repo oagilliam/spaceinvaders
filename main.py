@@ -51,8 +51,8 @@ def player(x, y):
     screen.blit(playerImg, (x, y))
 
 
-def enemy(x, y):
-    screen.blit(enemyImg, (x, y))
+def enemy(x, y, i):
+    screen.blit(enemyImg[i], (x, y))
 
 def fire_laser(x,y):
     global laser_state
@@ -113,7 +113,7 @@ while running:
             enemyY[i] += enemyY_change[i]
 
         # Collision
-        collision = isCollision(enemyX[i], enemyY[i], laserX[i], laserY[i])
+        collision = isCollision(enemyX[i], enemyY[i], laserX, laserY)
         if collision:
             laserY = 480
             laser_state = "ready"
@@ -121,6 +121,7 @@ while running:
             print(score)
             enemyX[i] = random.randint(0, 735)
             enemyY[i] = random.randint(50, 150)
+        enemy(enemyX[i], enemyY[i], i)
 
     # Laser Movment
     if laserY <=0:
@@ -131,17 +132,6 @@ while running:
         fire_laser(laserX,laserY)
         laserY -= laserY_change
 
-    # Collision
-    collision = isCollision(enemyX,enemyY,laserX,laserY)
-    if collision:
-        laserY = 480
-        laser_state = "ready"
-        score += 1
-        print(score)
-        enemyX = random.randint(0,735)
-        enemyY = random.randint(50,150)
-
     player(playerX, playerY)
-    enemy(enemyX, enemyY)
     # This will update the screen/display/game window
     pygame.display.update()
