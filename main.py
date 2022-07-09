@@ -22,11 +22,19 @@ playerY = 480
 playerX_change = 0
 
 # Enemy
-enemyImg = pygame.image.load("alien.png")
-enemyX = random.randint(0,735)
-enemyY = random.randint(50,150)
-enemyX_change = 0.9
-enemyY_change = 40
+enemyImg = []
+enemyX = []
+enemyY = []
+enemyX_change = []
+enemyY_change = []
+num_of_enemy = 6
+
+for i in range(num_of_enemy):
+    enemyImg.append(pygame.image.load("alien.png"))
+    enemyX.append(random.randint(0,735))
+    enemyY.append(random.randint(50,150))
+    enemyX_change.append(4)
+    enemyY_change.append(40)
 
 # Laser
 # ready, means the player can't see the laser on the screen
@@ -95,14 +103,23 @@ while running:
         playerX = 736
 
     # Enemy movement
-    enemyX += enemyX_change
-
-    if enemyX <= 0:
-        enemyX_change = 0.9
-        enemyY += enemyY_change
-    elif enemyX >= 736:
-        enemyX_change = -0.9
-        enemyY += enemyY_change
+    for i in range(num_of_enemy):
+        enemyX[i] += enemyX_change[i]
+        if enemyX[i] <= 0:
+            enemyX_change[i] = 0.9
+            enemyY[i] += enemyY_change[i]
+        elif enemyX[i] >= 736:
+            enemyX_change[i] = -0.9
+            enemyY[i] += enemyY_change[i]
+        # Collision
+        collision = isCollision(enemyX[i], enemyY[i], laserX[i], laserY[i])
+        if collision:
+            laserY = 480
+            laser_state = "ready"
+            score += 1
+            print(score)
+            enemyX = random.randint(0, 735)
+            enemyY = random.randint(50, 150)
 
     # Laser Movment
     if laserY <=0:
