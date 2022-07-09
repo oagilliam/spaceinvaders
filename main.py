@@ -111,6 +111,7 @@ while running:
         elif enemyX[i] >= 736:
             enemyX_change[i] = -0.9
             enemyY[i] += enemyY_change[i]
+
         # Collision
         collision = isCollision(enemyX[i], enemyY[i], laserX[i], laserY[i])
         if collision:
@@ -118,8 +119,8 @@ while running:
             laser_state = "ready"
             score += 1
             print(score)
-            enemyX = random.randint(0, 735)
-            enemyY = random.randint(50, 150)
+            enemyX[i] = random.randint(0, 735)
+            enemyY[i] = random.randint(50, 150)
 
     # Laser Movment
     if laserY <=0:
