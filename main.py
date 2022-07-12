@@ -45,7 +45,16 @@ laserY = 480
 laserY_change = 10
 laser_state = "ready"
 
-score = 0
+# Score
+score_value = 0
+font = pygame.font.Font('freesansbold.ttf', 32)
+
+textX = 10
+textY = 10
+
+def show_score(x,y):
+    score = font.render('Score:' + str(score_value), True, (255,255,255))
+    screen.blit(score, (x, y))
 
 def player(x, y):
     screen.blit(playerImg, (x, y))
@@ -117,8 +126,8 @@ while running:
         if collision:
             laserY = 480
             laser_state = "ready"
-            score += 1
-            print(score)
+            score_value += 1
+            print(score_value)
             enemyX[i] = random.randint(0, 735)
             enemyY[i] = random.randint(50, 150)
         enemy(enemyX[i], enemyY[i], i)
@@ -133,5 +142,6 @@ while running:
         laserY -= laserY_change
 
     player(playerX, playerY)
+    show_score(textX,textY)
     # This will update the screen/display/game window
     pygame.display.update()
