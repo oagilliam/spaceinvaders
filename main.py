@@ -11,7 +11,7 @@ screen = pygame.display.set_mode((800, 600))
 # Background
 background = pygame.image.load("background.png")
 
-# BAckground Sound
+# Background Sound
 mixer.music.load('Overall winner - John Epping.wav')
 mixer.music.play(-1)
 
@@ -100,9 +100,12 @@ while running:
                 playerX_change = 3
             if event.key == pygame.K_SPACE:
                 if laser_state is "ready":
+                    laser_sound = mixer.Sound('laser.wav')
+                    laser_sound.play()
                     # Gets the current x coordinate of the ship
                     laserX = playerX
                     fire_laser(playerX, laserY)
+
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                 playerX_change = 0
@@ -129,6 +132,8 @@ while running:
         # Collision
         collision = isCollision(enemyX[i], enemyY[i], laserX, laserY)
         if collision:
+            explosion_sound = mixer.Sound('explosion.wav')
+            explosion_sound.play()
             laserY = 480
             laser_state = "ready"
             score_value += 1
