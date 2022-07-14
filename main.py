@@ -11,6 +11,10 @@ screen = pygame.display.set_mode((800, 600))
 # Background
 background = pygame.image.load("background.png")
 
+# BAckground Sound
+mixer.music.load('Overall winner - John Epping.wav')
+mixer.music.play(-1)
+
 # Title and Icon
 pygame.display.set_caption("Space Invaders")
 icon = pygame.image.load("Spaceship1.png")
