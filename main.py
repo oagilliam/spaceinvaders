@@ -36,7 +36,7 @@ num_of_enemy = 6
 
 for i in range(num_of_enemy):
     enemyImg.append(pygame.image.load("alien.png"))
-    enemyX.append(random.randint(0,735))
+    enemyX.append(random.randint(0,736))
     enemyY.append(random.randint(50,150))
     enemyX_change.append(4)
     enemyY_change.append(40)
@@ -47,6 +47,7 @@ for i in range(num_of_enemy):
 laserImg = pygame.image.load("yellowlaserbeam.png")
 laserX = 0
 laserY = 480
+laserX = 0
 laserY_change = 10
 laser_state = "ready"
 
@@ -57,7 +58,7 @@ font = pygame.font.Font('freesansbold.ttf', 32)
 textX = 10
 textY = 10
 
-# Game Over text
+# Game Over
 over_font = pygame.font.Font('freesansbold.ttf', 64)
 
 
@@ -66,7 +67,7 @@ def show_score(x,y):
     screen.blit(score, (x, y))
 
 def game_over_text():
-    over_text = font.render('GAME OVER!' + str(score_value), True, (255, 255, 255))
+    over_text = over_font.render('GAME OVER!', True, (255, 255, 255))
     screen.blit(over_text, (200, 250))
 
 def player(x, y):
@@ -100,12 +101,13 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+
         # If keystroke is pressed check whether its right or left
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                playerX_change = -3
+                playerX_change = -5
             if event.key == pygame.K_RIGHT:
-                playerX_change = 3
+                playerX_change = 5
             if event.key == pygame.K_SPACE:
                 if laser_state is "ready":
                     laser_sound = mixer.Sound('laser.wav')
@@ -120,7 +122,6 @@ while running:
 
     # Checks for boundaries of spaceship to prevent it from going out of bounds
     playerX += playerX_change
-
     if playerX <= 0:
         playerX = 0
     # 800 - 64 pixels (size of the image) is 736.
@@ -129,8 +130,8 @@ while running:
 
     # Enemy movement
     for i in range(num_of_enemy):
-        # Game OVer
-        if enemyY[i] > 200:
+        # Game Over
+        if enemyY[i] > 400:
             for j in range(num_of_enemy):
                 enemyY[j] = 2000
             game_over_text()
@@ -138,10 +139,10 @@ while running:
 
         enemyX[i] += enemyX_change[i]
         if enemyX[i] <= 0:
-            enemyX_change[i] = 0.9
+            enemyX_change[i] = 2
             enemyY[i] += enemyY_change[i]
         elif enemyX[i] >= 736:
-            enemyX_change[i] = -0.9
+            enemyX_change[i] = -2
             enemyY[i] += enemyY_change[i]
 
         # Collision
@@ -153,12 +154,12 @@ while running:
             laser_state = "ready"
             score_value += 1
             print(score_value)
-            enemyX[i] = random.randint(0, 735)
+            enemyX[i] = random.randint(0, 736)
             enemyY[i] = random.randint(50, 150)
         enemy(enemyX[i], enemyY[i], i)
 
     # Laser Movment
-    if laserY <=0:
+    if laserY <= 0:
         laserY = 480
         laser_state = 'ready'
 
